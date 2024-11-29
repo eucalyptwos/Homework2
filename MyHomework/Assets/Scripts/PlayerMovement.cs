@@ -53,5 +53,14 @@ public class PlayerMovement : MonoBehaviour
 		movementValue.x * Time.deltaTime*speed, 0, movementValue.y * Time.deltaTime*speed);
 
 		rb.AddRelativeTorque(0, lookValue * Time.deltaTime*rotationSpeed, 0);
+		if (Input.GetKey(KeyCode.LeftAlt))
+		{
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.Confined;
+		}else
+		{
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+		}
 	}
 }

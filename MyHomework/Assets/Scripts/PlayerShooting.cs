@@ -10,7 +10,8 @@ public class PlayerShoot : MonoBehaviour
 	public GameObject ShootPoint;
 	public ParticleSystem cartridge;
     public AudioSource shootsound;
-	// Start is called before the first frame update
+    private float attackcooltime = 0f;
+    // Start is called before the first frame update
 	void Start()
     {
         
@@ -20,14 +21,19 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         GameObject clone;
-
-		if (Input.GetKeyDown(KeyCode.Mouse0))
+        if(attackcooltime>0f)
+            attackcooltime -= Time.deltaTime;
+		if (Input.GetMouseButton(0))
         {
-            if(GetComponent<PlayerMovement>().ammoType ==0) clone = Instantiate(prefab1); else clone = Instantiate(prefab2);
-            clone.transform.position = ShootPoint.transform.position;
-            clone.transform.rotation = ShootPoint.transform.rotation;
-            cartridge.Play();
-            shootsound.Play();
+            if (attackcooltime <= 0f)
+            {
+                attackcooltime = 0.15f;
+                if (GetComponent<PlayerMovement>().ammoType == 0) clone = Instantiate(prefab1); else clone = Instantiate(prefab2);
+                clone.transform.position = ShootPoint.transform.position;
+                clone.transform.rotation = ShootPoint.transform.rotation;
+                cartridge.Play();
+                shootsound.Play();
+            }
 
 		}
         

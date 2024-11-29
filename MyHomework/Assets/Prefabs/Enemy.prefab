@@ -386,7 +386,7 @@ MonoBehaviour:
   baseTransform: {fileID: 0}
   playerbase: {fileID: 0}
   sightSensor: {fileID: 2491182869793306663}
-  baseAttackDistance: 15
+  baseAttackDistance: 20
   damage: 20
   playerAttackDistance: 0
 --- !u!195 &5848273605988621967

@@ -441,7 +441,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"11033119e38d7a14989752b9c53f485d","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":2800000,"guid":"c8aee7083cbcf1a44b87e2e29b1bffd3","type":3}}'
     m_Space: -1
   m_Property:
     name: mainTexture
@@ -2430,7 +2430,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":40.0,"y":40.0,"z":40.0}'
+      m_SerializableObject: '{"x":10.0,"y":10.0,"z":20.0}'
     m_Space: -1
   m_Property:
     name: Scale
