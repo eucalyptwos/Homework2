@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float rotationSpeed;
     public int ammoType;
+	public Vector2 v2;
 	private Rigidbody rb;
 	// Start is called before the first frame update
 	void Start()
@@ -26,6 +27,15 @@ public class PlayerMovement : MonoBehaviour
 	public void OnMove(InputValue value)
 	{
         movementValue = value.Get<Vector2>()*speed;
+		Debug.Log(value.Get<Vector2>().ToString());
+		if (value.Get<Vector2>() != v2)
+		{
+			gameObject.GetComponent<Animator>().SetBool("Moving", true);
+		}
+		else
+		{
+			gameObject.GetComponent<Animator>().SetBool("Moving", false);
+		}
 	}
     public void OnLook(InputValue value) {
         lookValue = value.Get<Vector2>().x*rotationSpeed;

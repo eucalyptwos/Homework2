@@ -13,10 +13,12 @@ public class EnemyFSM : MonoBehaviour
 	public float baseAttackDistance;
 	public int damage;
 	private NavMeshAgent agent;
+	private float timer;
 	
 	// Start is called before the first frame update
 	private void Awake()
     {
+		timer = 0.0f;
 		playerbase = GameObject.FindWithTag("PlayerBase");
 		baseTransform = playerbase.transform;
 		if (baseTransform == null)
@@ -47,13 +49,16 @@ public class EnemyFSM : MonoBehaviour
 			currentState = EnemyState.GoToBase;
 			return;
 		}
-
-		playerbase.GetComponent<Enemy>().hp -= damage;
-		if (playerbase.GetComponent<Enemy>().hp < 1)
+		if (timer <= 0.0f)
 		{
+			timer = 0.1f;
+			playerbase.GetComponent<Enemy>().hp -= damage;
+			if (playerbase.GetComponent<Enemy>().hp < 1)
+			{
 
-			Destroy(playerbase);
-			GameObject.FindWithTag("EditorOnly").GetComponent<GameManager>().enemynum = 9999;
+				Destroy(playerbase);
+				GameObject.FindWithTag("EditorOnly").GetComponent<GameManager>().enemynum = 9999;
+			}
 		}
 	}
 
@@ -76,5 +81,7 @@ public class EnemyFSM : MonoBehaviour
 		{
 			AttackBase();
 		}
+		if(timer > 0.0f)
+			timer -= Time.deltaTime;
     }
 }

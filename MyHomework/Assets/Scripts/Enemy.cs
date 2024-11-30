@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     {
        if (hp < 0) hp = 100;
 
+		if (gameObject.name == "BaseDamagePoint")
+			gameObject.GetComponent<BullHPProgress>().bullHPinitial = hp;
 	}
 
     // Update is called once per frame

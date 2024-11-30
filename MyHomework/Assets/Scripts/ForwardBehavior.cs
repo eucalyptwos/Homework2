@@ -8,8 +8,7 @@ public class ForwardBehavior : MonoBehaviour
     public float delay;
     // Start is called before the first frame update
     void Start()
-    {
-        speed = 5;
+    { 
         delay = 3;
 		Destroy(gameObject, delay);
 	}
