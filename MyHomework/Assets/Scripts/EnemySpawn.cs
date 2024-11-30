@@ -18,7 +18,7 @@ public class EnemySpawn : MonoBehaviour
         Vector3 randomPosition = new Vector3(Random.Range(-20, 20), 0.0f, Random.Range(-20, 20));
 
 		Instantiate(prefab, transform.position+ randomPosition, Quaternion.Euler(0, 0, 0));
-        target.GetComponent<GameManager>().enemynum += 1;
+        target.GetComponent<GamePlayManager>().enemynum += 1;
 	}
     // Update is called once per frame
     void Update()

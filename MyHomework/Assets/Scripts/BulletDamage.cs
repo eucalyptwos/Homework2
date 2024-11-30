@@ -15,8 +15,7 @@ public class BulletDamage : MonoBehaviour
 			if (other.gameObject.GetComponent<Enemy>().hp < 1)
 			{
 				ek = GameObject.Find("Objective").GetComponent<ObjectInfo>().enemyKill++;
-				if(ek==4)
-					GameObject.FindWithTag("EditorOnly").GetComponent<GameManager>().enemynum = -1;
+				GameObject.FindWithTag("GameController").GetComponent<GamePlayManager>().enemynum --;
 				Destroy(other.gameObject);
 			}
 			Destroy(gameObject);

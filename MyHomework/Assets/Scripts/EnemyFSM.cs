@@ -31,7 +31,8 @@ public class EnemyFSM : MonoBehaviour
     }
 	void GoToBase()
 	{
-
+		if(baseTransform == null)
+			baseTransform = gameObject.transform;
 		float distanceToBase = Vector3.Distance(
 			transform.position, baseTransform.position);
 		if (distanceToBase < baseAttackDistance)
@@ -57,7 +58,7 @@ public class EnemyFSM : MonoBehaviour
 			{
 
 				Destroy(playerbase);
-				GameObject.FindWithTag("EditorOnly").GetComponent<GameManager>().enemynum = 9999;
+				GameObject.FindWithTag("GameController").GetComponent<GamePlayManager>().enemynum = 9999;
 			}
 		}
 	}

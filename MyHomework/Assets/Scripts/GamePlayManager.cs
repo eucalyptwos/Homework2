@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+
+public class GamePlayManager : MonoBehaviour
 {
-	private float timer=0.0f;
+	private float timer = 0.0f;
 	private bool started;
 	private int time = 4;
 	public GameObject canva;
@@ -14,15 +15,16 @@ public class GameManager : MonoBehaviour
 	void Start()
 	{
 		started = true;
+		enemynum = 1;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		Debug.Log(enemynum);
 		if (started)
 		{
 			timer += Time.deltaTime;
-			Debug.Log(timer);
 			if (timer > 4.99f)
 			{
 				GameObject.Find("Fox(Player)").GetComponent<PlayerMovement>().enabled = true;
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
 				canva.SetActive(true);
 				started = false;
 				timer = 0.0f;
+				enemynum --;
 			}
 		}
 		if (enemynum >= 999)
@@ -37,14 +40,15 @@ public class GameManager : MonoBehaviour
 			GameObject.Find("Fox(Player)").GetComponent<Animator>().SetBool("Defeat", true);
 			GameObject.Find("Fox(Player)").GetComponent<PlayerMovement>().enabled = false;
 			GameObject.Find("Fox(Player)").GetComponent<PlayerShoot>().enabled = false;
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.Confined;
 			timer += Time.deltaTime;
 			if (timer > time)
 				SceneManager.LoadScene("LoseScene");
 		}
-		if (enemynum == -1)
+		if (enemynum == 0)
 		{
 			SceneManager.LoadScene("WinScene");
 		}
 	}
 }
-

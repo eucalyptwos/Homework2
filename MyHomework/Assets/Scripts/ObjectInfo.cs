@@ -16,7 +16,7 @@ public class ObjectInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        txt.text =enemyKill + "/5";
+        txt.text =enemyKill + "/11";
 
 	}
 }

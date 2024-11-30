@@ -17,6 +17,7 @@ public class BullHPProgress : MonoBehaviour
     void Update()
     {
         bullHp=gameObject.GetComponent<Enemy>().hp/ bullHPinitial;
-        GameObject.Find("ProgressHP").GetComponent<Slider>().value = bullHp;
+        if(GameObject.Find("ProgressHP")!=null)
+            GameObject.Find("ProgressHP").GetComponent<Slider>().value = bullHp;
     }
 }
